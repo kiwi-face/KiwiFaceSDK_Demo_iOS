@@ -1,5 +1,5 @@
-# KiwiFaceSDK_Demo_iOS
-Kiwi人脸跟踪及特效（贴纸、美颜、滤镜、哈哈镜）在声网SDK中的集成demo - iOS版
+# 由开为科技开发的KiwiFace SDK，iOS Demo
+KiwiFace人脸跟踪及特效（贴纸、美颜、滤镜、哈哈镜）在声网SDK中的集成demo - iOS版
 
 ## 
 
@@ -23,6 +23,6 @@ Kiwi人脸跟踪及特效（贴纸、美颜、滤镜、哈哈镜）在声网SDK�
 
 - 欢迎联系我们：QQ 174371791 邮箱  contact@kiwiar.com  
 - 手机 13955591813
-- 欢迎访问我们的官方网：http://kiwiar.com
+- 欢迎访问开为科技的官方网：http://kiwiar.com
 - SDK免费试用Demo链接：http://www.kiwiar.com/demo
 
