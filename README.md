@@ -17,7 +17,7 @@ KiwiFace人脸跟踪及特效（贴纸、美颜、滤镜、哈哈镜）在声网
 
 ## 四. 反馈与建议
 
-- Issues: (https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS/issues)
+- [Issues](https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS/issues)
 
 ## 五. 联系方式
 
