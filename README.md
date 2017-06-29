@@ -1,5 +1,6 @@
 # 由开为科技开发的KiwiFace SDK，iOS Demo
-KiwiFace人脸跟踪及特效（贴纸、美颜、滤镜、哈哈镜）在声网SDK中的集成demo - iOS版
+KiwiFace人脸跟踪及特效（动态贴纸、美颜、滤镜、哈哈镜）的demo - iOS版
+KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸集成效果
 
 ## 
 
@@ -11,9 +12,9 @@ KiwiFace人脸跟踪及特效（贴纸、美颜、滤镜、哈哈镜）在声网
 - 最低支持版本为 7.0
 - 支持的cpu架构：armv7, armv7s, arm64, x86(仅支持编译)
 
-## 三. 开发指南
+## 三. 开发指南（贴纸及美颜滤镜）
 
- - [开发者手册](https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS/blob/master/docs/ios-instruction.md)                                                                                                                                                                                                                         
+ - [开发者手册--贴纸美颜滤镜](https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS/blob/master/docs/ios-instruction.md)                                                                                                                                                                                                                         
 
 ## 四. 反馈与建议
 
@@ -24,5 +25,5 @@ KiwiFace人脸跟踪及特效（贴纸、美颜、滤镜、哈哈镜）在声网
 - 欢迎联系我们：QQ 174371791 邮箱  contact@kiwiar.com  
 - 手机 13955591813
 - 欢迎访问开为科技的官方网：http://kiwiar.com
-- SDK免费试用Demo链接：http://www.kiwiar.com/demo
+- 贴纸美颜滤镜SDK免费试用Demo链接：http://www.kiwiar.com/demo
 
