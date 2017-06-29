@@ -1,6 +1,6 @@
-# 由开为科技开发的KiwiFace SDK，iOS Demo
+# 由开为科技开发的贴纸美颜滤镜SDK KiwiFace，iOS Demo
 KiwiFace人脸跟踪及特效（动态贴纸、美颜、滤镜、哈哈镜）的demo - iOS版
-KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸美颜滤镜集成效果
+KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸美颜滤镜集成
 
 ## 
 
