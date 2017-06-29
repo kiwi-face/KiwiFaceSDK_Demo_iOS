@@ -4,19 +4,19 @@ KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸集成�
 
 ## 
 
-## 一. 功能特点
+## 一. 贴纸美颜滤镜功能特点
 #### 录制功能
 
-## 二. 运行环境
+## 二. 贴纸美颜滤镜运行环境
 
 - 最低支持版本为 7.0
 - 支持的cpu架构：armv7, armv7s, arm64, x86(仅支持编译)
 
-## 三. 开发指南（贴纸及美颜滤镜）
+## 三. 贴纸美颜滤镜开发指南
 
  - [开发者手册--贴纸美颜滤镜](https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS/blob/master/docs/ios-instruction.md)                                                                                                                                                                                                                         
 
-## 四. 反馈与建议
+## 四. 贴纸美颜滤镜反馈与建议
 
 - [贴纸滤镜美颜Issues](https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS/issues)
 
