@@ -18,12 +18,12 @@ KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸集成�
 
 ## 四. 反馈与建议
 
-- [Issues](https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS/issues)
+- [贴纸滤镜美颜Issues](https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS/issues)
 
 ## 五. 联系方式
 
 - 欢迎联系我们：QQ 174371791 邮箱  contact@kiwiar.com  
 - 手机 13955591813
 - 欢迎访问开为科技的官方网：http://kiwiar.com
-- 贴纸美颜滤镜SDK免费试用Demo链接：http://www.kiwiar.com/demo
+- SDK（贴纸美颜滤镜）免费试用Demo链接：http://www.kiwiar.com/demo
 
