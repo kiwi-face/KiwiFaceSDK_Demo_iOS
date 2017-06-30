@@ -27,7 +27,9 @@ KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸美颜�
 - 欢迎访问开为科技的官方网：http://kiwiar.com
 - 贴纸美颜滤镜SDK免费试用Demo链接：http://www.kiwiar.com/demo
 
+## 六、Demo App下载体验（贴纸美颜滤镜github源代码程序）
+- https://itunes.apple.com/us/app/kiwiface/id1168913695?mt=8
 
-# 演示视频
+## 七、演示视频
 
 [![开为人脸贴纸美颜滤镜SDK演示视频](http://ogbqmomng.bkt.clouddn.com/kiwiar/img/new/demo-poster1.png)](http://ogbqmomng.bkt.clouddn.com/kiwiar/media/demo.mp4)
