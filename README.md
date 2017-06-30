@@ -27,4 +27,3 @@ KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸美颜�
 - 欢迎访问开为科技的官方网：http://kiwiar.com
 - 贴纸美颜滤镜SDK免费试用Demo链接：http://www.kiwiar.com/demo
 
-<iframe height= 300 width= 100% src="http://www.bilibili.com/video/av2993071/" frameborder=0 allowfullscreen></iframe>
