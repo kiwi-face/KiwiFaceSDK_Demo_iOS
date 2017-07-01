@@ -33,6 +33,6 @@ KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸美颜�
 ## 七、安卓github链接
 - https://github.com/kiwi-face/KiwiFaceSDK_Demo_Android
 
-## 八、视频展示
+## 八、视频展示（点击下图播放）
 [![开为人脸贴纸美颜滤镜SDK演示视频](http://ogbqmomng.bkt.clouddn.com/kiwiar/img/lens/lens-photo-1.png)](http://ogbqmomng.bkt.clouddn.com/kiwiar/media/kiwiface-demo.mp4)
 
