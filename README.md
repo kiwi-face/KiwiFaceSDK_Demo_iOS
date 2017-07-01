@@ -32,4 +32,4 @@ KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸美颜�
 
 ## 七、演示视频
 
-[![开为人脸贴纸美颜滤镜SDK演示视频](http://ogbqmomng.bkt.clouddn.com/kiwiar/media/kiwiface-demo-poster.jpg)](http://ogbqmomng.bkt.clouddn.com/kiwiar/media/kiwiface-demo.mp4)
+[![开为人脸贴纸美颜滤镜SDK演示视频](http://ogbqmomng.bkt.clouddn.com/kiwiar/img/lens/lens-photo-1.png)](http://ogbqmomng.bkt.clouddn.com/kiwiar/media/kiwiface-demo.mp4)
