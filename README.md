@@ -2,6 +2,8 @@
 KiwiFace人脸跟踪及特效（动态贴纸、美颜、滤镜、哈哈镜）的demo - iOS版
 KiwiFace同时提供集成在七牛云、声网Agora、环信上的贴纸美颜滤镜集成
 
+注：试用此SDK需要从网站自动生成license文件，详细情况请查阅http://www.kiwiar.com/demo
+
 ## 
 
 ## 一. 贴纸美颜滤镜功能特点
