@@ -38,7 +38,11 @@ kiwi人脸跟踪SDK，主要功能包括：
 
   ![](images/ios-project.jpg)
 
-2. 选中项目，如下图所示，点击 "Build and Run" 按钮进行编译
+2. 将从官网下载下来的授权文件（试用此SDK需要从网站自动生成绑定应用id的license文件，详细情况请查阅http://www.kiwiar.com/demo）放入KWFaceSDK/Tracker/models目录下
+
+	![](images/ios-license.jpg)
+
+3. 选中项目，如下图所示，点击 "Build and Run" 按钮进行编译
 
   示例截图
 
@@ -245,6 +249,7 @@ mirrored： 是否是镜像
     ```
 
   * 初始化全局滤镜集合
+  
     ```c
     self.lookupFilters = @[
          //Nature

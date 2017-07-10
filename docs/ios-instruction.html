@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>ios-instruction</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/*
+ Solarized Color Schemes originally by Ethan Schoonover
+ http://ethanschoonover.com/solarized
+
+ Ported for PrismJS by Hector Matos
+ Website: https://krakendev.io
+ Twitter Handle: https://twitter.com/allonsykraken)
+*/
+
+/*
+SOLARIZED HEX
+--------- -------
+base03    #002b36
+base02    #073642
+base01    #586e75
+base00    #657b83
+base0     #839496
+base1     #93a1a1
+base2     #eee8d5
+base3     #fdf6e3
+yellow    #b58900
+orange    #cb4b16
+red       #dc322f
+magenta   #d33682
+violet    #6c71c4
+blue      #268bd2
+cyan      #2aa198
+green     #859900
+*/
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #657b83; /* base00 */
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	background: #073642; /* base02 */
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	background: #073642; /* base02 */
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background-color: #fdf6e3; /* base3 */
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #93a1a1; /* base1 */
+}
+
+.token.punctuation {
+	color: #586e75; /* base01 */
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #268bd2; /* blue */
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.url,
+.token.inserted {
+	color: #2aa198; /* cyan */
+}
+
+.token.entity {
+	color: #657b83; /* base00 */
+	background: #eee8d5; /* base2 */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #859900; /* green */
+}
+
+.token.function {
+	color: #b58900; /* yellow */
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #cb4b16; /* orange */
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Kiwi人脸跟踪SDK快速集成指南(iOS)</h1>
+
+<p>kiwi人脸跟踪SDK，主要功能包括：</p>
+
+<ul>
+<li>静态图片的人脸以及关键点位置检测</li>
+<li>68个人脸关键点的实时检测与跟踪（单人脸/多人脸）</li>
+<li>美颜、哈哈镜等实时滤镜功能</li>
+<li>人脸Pose参数估计</li>
+<li>趣味2D贴纸</li>
+</ul>
+
+<p>我们的SDK针对移动端，在算法效率、硬件占用、性能精度等方面进行了相关优化，使其适用于移动端直播，美颜相机，滤镜相机，趣味贴纸，虚拟美妆等应用场景。</p>
+
+<h2 id="toc_1">流程图</h2>
+
+<p><img src="images/IOSpixelbuffer.png" alt=""></p>
+
+<p>这个文档将演示如何利用我们的demo快速入门，并详细描述具体集成步骤。</p>
+
+<h2 id="toc_2">Demo快速入门</h2>
+
+<p>该demo基于七牛的直播SDK，实现了在直播的场景下实现人脸跟踪以及趣味贴纸。</p>
+
+<h4 id="toc_3">准备环境</h4>
+
+<h6 id="toc_4">开发环境要求</h6>
+
+<p>软件
+    * XCode 6.0 或以上版本
+    * iOS 7.0 或以上版本</p>
+
+<p>硬件
+    * 支持语音/视频的真机设备</p>
+
+<h4 id="toc_5">编译代码示例</h4>
+
+<ol>
+<li><p>用XCode打开demo工程文件(PLMediaStreamingKitDemo)。代码包含以下目录结构</p>
+
+<p><img src="images/ios-project.jpg" alt=""></p></li>
+<li><p>将从官网下载下来的授权文件（试用此SDK需要从网站自动生成绑定应用id的license文件，详细情况请查阅http://www.kiwiar.com/demo）放入KWFaceSDK/Tracker/models目录下</p>
+
+<p><img src="images/ios-license.jpg" alt=""></p></li>
+<li><p>选中项目，如下图所示，点击 &quot;Build and Run&quot; 按钮进行编译</p>
+
+<p>示例截图</p></li>
+</ol>
+
+<p><img src="images/31.pic_hd.jpg" alt=""> | <img src="images/33.pic_hd.jpg" alt=""> |</p>
+
+<p>p.s. 该示例只支持在真机上实现功能，不支持模拟器。编译完成后，即可运行。</p>
+
+<h2 id="toc_6">具体集成步骤</h2>
+
+<h4 id="toc_7">第一步：准备环境</h4>
+
+<p>软件
+  * XCode 6.0 或以上版本
+  * iOS 7.0 或以上版本</p>
+
+<p>硬件
+  * 支持语音/视频的真机设备</p>
+
+<h4 id="toc_8">第二步：项目所需库</h4>
+
+<ul>
+<li><p><strong>kiwi提供</strong>（请从sdk文件夹中获取）</p>
+
+<ul>
+<li>libfaceTrackerSDK.a（人脸捕捉SDK）</li>
+<li>libKiwiFaceSDK.a（UI＋视频帧渲染SDK）</li>
+</ul></li>
+<li><p><strong>自行下载</strong>（若项目中已经存在则不需要下载）</p>
+
+<p>必选：</p>
+
+<ul>
+<li>GPUImage视频渲染基于GPUImage SDK
+https://github.com/BradLarson/GPUImage.git</li>
+<li>opencv3.framework
+https://sourceforge.net/projects/opencvlibrary/files/opencv-ios/3.0.0/</li>
+</ul>
+
+<p>可选：
+* libyuv (sdk视频帧的渲染暂时只支持NV21格式的传入，如果应用视频帧是YUV或者其他视频流类型，需要导入视频流格式的转换类)
+https://github.com/lemenkov/libyuv.git</p></li>
+<li><p><strong>系统库</strong> （xcode自带）</p>
+
+<ul>
+<li>UIKit.framework</li>
+<li>Foundation.framework</li>
+</ul></li>
+</ul>
+
+<h4 id="toc_9">第三步：部署工程</h4>
+
+<ol>
+<li><p>导入 libKiwiFaceSDK.a 文件和所有包含的头文件、实现文件、资源文件。（我们提供了两种libKiwiFaceSDK.a文件。libKiwiFaceSDK.a同时支持模拟器与真机，供开发调试使用。libKiwiFaceSDK_release.a仅支持真机，供发布使用。）</p>
+
+<p><img src="images/KiwiFaceSDK.jpg" alt=""></p></li>
+<li><p>导入Tracker 人脸捕捉的SDK包和StickerManager。（我们提供了两种libfaceTrackerSDK.a文件。libfaceTrackerSDK<em>lic.a同时支持模拟器与真机，供开发调试使用。libfaceTrackerSDK</em>release.a仅支持真机，供发布使用。）</p>
+
+<p><img src="images/Tracker.jpg" alt=""></p>
+
+<p><img src="images/StickerManager.jpg" alt=""></p>
+
+<p>这里注意tracker包的models文件夹和StickerManager文件夹下的stickers贴纸文件夹，必须只是导入引用，不要包含到项目工程里面来(文件夹图标为蓝色)。如下图设置：</p>
+
+<p><img src="images/target-settings.png" alt=""></p></li>
+<li><p>导入GPUImage，用于视频渲染（我们提供了两种libGPUImage.a文件。libGPUImage.a同时支持模拟器与真机，供开发调试使用。libGPUImage_release.a仅支持真机，供发布使用。）</p></li>
+<li><p>如有需要，导入libyuv</p>
+
+<p>sdk视频帧的渲染暂时只支持NV21格式的传入 如果应用视频帧是YUV或者其他视频流类型 需要导入视频流格式的转换类。</p></li>
+<li><p>导入 opencv3.framework</p>
+
+<p>注意，从官网下载的包有可能被错误的命名为opencv2.framework。</p></li>
+</ol>
+
+<h4 id="toc_10">第四步：贴纸配置</h4>
+
+<p>如果有需要，请配置贴纸。贴纸相关文件存放在stickers目录下，一套贴纸对应一个目录，每套贴纸包含一个config.json文件，其中配置了音效文件名及每个item参数等信息。其结构如下：</p>
+
+<div><pre><code class="language-none">  |--[sticker_1] （贴纸1）
+  |   |--config.json （贴纸配置文件）
+  |   |--[audio]（音频文件）
+  |   |--[preview]（贴纸预览图）
+  |   |--[item_1]（贴纸序列图文件夹1）
+  |   |   |--[frame_1]（贴纸序列图1）
+  |   |   |--[frame_2]（贴纸序列图2）
+  |   |   |--...
+  |   |   |--[frame_n]（贴纸序列图n）
+  |   |--[item_2]（贴纸序列图文件夹2）
+  |   |--...
+  |   |--[item_n]（贴纸序列图文件夹n）
+  |--[sticker_2]（贴纸2）
+  |--...
+  |--[sticker_n]（贴纸n）
+  |—StickerConfig.json（总配置文件）</code></pre></div>
+
+<p>程序靠读取在stickers文件夹下的StickerConfig.json显示相应的贴纸和图标。</p>
+
+<p>注意，使用贴纸云，需要在Info.plist中加入App Transport Security Settings字段，并将Allow Arbitrary Loads设置为YES。
+  <strong>具体的json文件格式如下：</strong></p>
+
+<p>StickerConfig.json</p>
+
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>意义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>name</td>
+<td>贴纸的名称（UI显示和贴纸的识别）</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>贴纸存放路径文件夹名称</td>
+</tr>
+<tr>
+<td>category</td>
+<td>类别（贴纸类型的区分或分组）</td>
+</tr>
+<tr>
+<td>thumb</td>
+<td>贴纸图标的文件名（与声音在同一文件夹下）</td>
+</tr>
+<tr>
+<td>voiced</td>
+<td>true（有声音）false（没有声音播放）</td>
+</tr>
+<tr>
+<td>downloaded</td>
+<td>是否已经下载。如果没有下载，程序则可以去下载到指定目录后更改该状态</td>
+</tr>
+</tbody>
+</table>
+
+<p>config.json</p>
+
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>意义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>type</td>
+<td>贴纸显示的位置类型（脸部、全屏）</td>
+</tr>
+<tr>
+<td>facePos</td>
+<td>贴纸在脸部的位置</td>
+</tr>
+<tr>
+<td>scaleWidthOffset</td>
+<td>贴纸宽度缩放系数</td>
+</tr>
+<tr>
+<td>scaleHeightOffset</td>
+<td>贴纸高度缩放系数</td>
+</tr>
+<tr>
+<td>scaleXOffset</td>
+<td>贴纸在脸部水平方向偏移系数</td>
+</tr>
+<tr>
+<td>scaleYOffset</td>
+<td>贴纸在脸部垂直方向偏移系数</td>
+</tr>
+<tr>
+<td>alignPos</td>
+<td>边缘item参数</td>
+</tr>
+<tr>
+<td>alignX</td>
+<td>边缘水平方向偏移系数</td>
+</tr>
+<tr>
+<td>alignY</td>
+<td>边缘垂直方向系数</td>
+</tr>
+<tr>
+<td>frameFolder</td>
+<td>贴纸资源目录（包括一组图片序列帧）</td>
+</tr>
+<tr>
+<td>frameNum</td>
+<td>帧数（一组序列帧组成一个动画效果）</td>
+</tr>
+<tr>
+<td>frameDuration</td>
+<td>每帧的间隔（秒）</td>
+</tr>
+<tr>
+<td>frameWidth</td>
+<td>图片的宽</td>
+</tr>
+<tr>
+<td>frameHeight</td>
+<td>图片的高</td>
+</tr>
+<tr>
+<td>trigerType</td>
+<td>触发条件，默认0，始终显示</td>
+</tr>
+</tbody>
+</table>
+
+<p>编写config.json文件可使用我司提供的工具 https://apps.kiwiapp.mobi/sticker.html 进行调试生成。</p>
+
+<h4 id="toc_11">第五步：调用API</h4>
+
+<h6 id="toc_12">使用SDK内置UI</h6>
+
+<p>如果直接使用我们SDK内置的UI, 可以在页面的viewDidload里面初始化SDK。</p>
+
+<div><pre><code class="language-c">/* 获得SDK操作类的实例对象 */
+self.kwSdkUI = [KiwiFaceSDK_UI shareManagerUI];
+/* 设置SDK内置UI的 ViewController 如果不用内置UI 不用设置 */
+[self.kwSdkUI setViewDelegate:self];
+/* 初始化SDK 一些渲染对象以及初始参数 */
+[self.kwSdkUI.kwSdk initSdk];
+/* 如果使用内置UI 该属性是判断是否清除原有项目的页面UI 如果原有UI功能少 可以用内置UI 替代 一般来说用不到 */
+self.kwSdkUI.isClearOldUI = NO;
+ /* 初始化内置UI */
+[self.kwSdkUI initSDKUI];
+ /* 渲染视频帧，在每一帧视频代理函数中调用 */
+self.kwSdkUI.kwSdk = [KiwiFaceSDK sharedManager];
+/*
+对每一帧的视频图像进行人脸捕捉 并对当前选择的滤镜进行视频帧渲染
+pixelBuffer：每一帧的像素流
+cvMobileRotate ：屏幕方向（横竖屏）
+mirrored： 是否是镜像
+*/
+[kwSdk.renderer processPixelBuffer:pixelBuffer withRotation:cvMobileRotate mirrored:mirrored];</code></pre></div>
+
+<h6 id="toc_13">使用sdk自带功能</h6>
+
+<ul>
+<li><p>初始化具体功能：</p>
+
+<ul>
+<li>初始化普通滤镜或贴纸集合</li>
+</ul>
+
+<div><pre><code class="language-c">self.filters = @[
+   //描点
+   [FTPointsRenderer new],
+   //贴纸
+   [FTStickerRenderer new]
+];</code></pre></div>
+
+<ul>
+<li>初始化哈哈镜滤镜集合</li>
+</ul>
+
+<div><pre><code class="language-c">self.distortionFilters = @[
+     //方脸
+     [GPUImageSquareFaceFilter new],
+     //ET脸
+     [ETnewFilter new],
+     //胖脸
+     [FatFaceFilter new],
+     //蛇精脸
+     [SlimFaceFilter new],
+     //梨脸
+     [PearFaceDistortionFilter new]
+];</code></pre></div>
+
+<ul>
+<li>初始化美颜滤镜集合
+```c
+self.beautifyFilters = @[
+ //大眼
+ [SmallFaceBigEyeFilter new]
+];</li>
+</ul>
+
+<p>self.beautifyNewFilters = @[
+     //美颜
+     [GPUImageBeautifyFilter new]
+];
+```</p>
+
+<ul>
+<li>初始化全局滤镜集合</li>
+</ul>
+
+<div><pre><code class="language-c">self.lookupFilters = @[
+     //Nature
+     [[FTLookupFilter alloc] initWithType:FTLookupTypeNature],
+     //Sweety
+     [[FTLookupFilter alloc] initWithType:FTLookupTypeSweety],
+     //Clean
+     [[FTLookupFilter alloc] initWithType:FTLookupTypeClean],
+     //Peach
+     [[FTLookupFilter alloc] initWithType:FTLookupTypePeach],
+     //Rosy
+     [[FTLookupFilter alloc] initWithType:FTLookupTypeRosy],
+     //Urban
+     [[FTLookupFilter alloc] initWithType:FTLookupTypeUrban]
+];</code></pre></div></li>
+<li><p>调用具体功能：</p>
+
+<div><pre><code class="language-c">//调用美颜
+[self.renderer addFilter:self.beautifyNewFilters[0]];
+//调用描点
+[self.renderer addFilter:self.filters[0]];
+//调用哈哈镜
+[self.renderer addFilter:self.currentDistortionFilter];
+//调用滤镜
+[self.renderer addFilter:self.currentLookupFilter];
+//调用贴纸
+[self.renderer addFilter:self.filters[1]];</code></pre></div></li>
+<li><p>去除具体功能：</p>
+
+<div><pre><code class="language-c">//去除美颜
+[self.renderer removeFilter:self.beautifyNewFilters[0]];
+//去除描点
+[self.renderer removeFilter:self.filters[0]];
+//去除哈哈镜
+[self.renderer removeFilter:self.currentDistortionFilter];
+//去除滤镜
+[self.renderer removeFilter:self.currentLookupFilter];
+//去除贴纸
+[(FTStickerRenderer *)self.filters[1] setSticker:nil];</code></pre></div></li>
+</ul>
+
+<h6 id="toc_14">自定义功能扩展</h6>
+
+<ul>
+<li><p>增加特定滤镜，进行渲染：</p>
+
+<p>在 sdk入口类中，有一个类型为KWRenderer的渲染类，由他来控制滤镜的增加。</p>
+
+<div><pre><code class="language-none">[KiwiFaceSDK.KWRenderer addFilter: GPUImageOutput&lt;GPUImageInput, KWRenderProtocol&gt; *];</code></pre></div>
+
+<p>滤镜对象必须遵守GPUImageInput和KWRenderProtocol两个协议才能正常被人脸捕捉和渲染。</p></li>
+<li><p>删除特定滤镜，停止渲染：</p>
+
+<div><pre><code class="language-none">[KiwiFaceSDK.KWRenderer removeFilter: GPUImageOutput&lt;GPUImageInput, KWRenderProtocol&gt; *];</code></pre></div></li>
+<li><p>人脸捕捉之后，在渲染视频帧之前可以对每一帧图像做自定义处理的回调block：</p>
+
+<div><pre><code class="language-none">typedef void (^RenderAndGetFacePointsBlock)(unsigned char *pixels, int format, int width, int height,result_68_t *p_result, int rstNum, int orientation,int faceNum);
+//block属性
+@property (nonatomic, copy)RenderAndGetFacePointsBlock kwRenderBlock;</code></pre></div>
+
+<p>block 回调用于在人脸捕捉之后，渲染之前，可以对视频帧进行自定已处理的接口。Block的3个参数可供处理和使用：</p>
+
+<ul>
+<li>result ：人脸坐标集合 （可能是多张人脸 是二维数组）</li>
+<li>faceNum ：捕捉到的人脸数量</li>
+<li>pixelBuffer：单帧的像素流</li>
+</ul></li>
+</ul>
+
+<h6 id="toc_15">释放内存</h6>
+
+<p>我们建议在离开页面的时候释放内存</p>
+
+<div><pre><code class="language-c">[KiwiFaceSDK releaseManager];</code></pre></div>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:{pattern:/(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.c=Prism.languages.extend("clike",{keyword:/\b(asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)\b/,operator:/\-[>-]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|?\||[~^%?*\/]/,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)[ful]*\b/i}),Prism.languages.insertBefore("c","string",{macro:{pattern:/(^\s*)#\s*[a-z]+([^\r\n\\]|\\.|\\(?:\r\n?|\n))*/im,lookbehind:!0,alias:"property",inside:{string:{pattern:/(#\s*include\s*)(<.+?>|("|')(\\?.)+?\3)/,lookbehind:!0},directive:{pattern:/(#\s*)\b(define|elif|else|endif|error|ifdef|ifndef|if|import|include|line|pragma|undef|using)\b/,lookbehind:!0,alias:"keyword"}}},constant:/\b(__FILE__|__LINE__|__DATE__|__TIME__|__TIMESTAMP__|__func__|EOF|NULL|stdin|stdout|stderr)\b/}),delete Prism.languages.c["class-name"],delete Prism.languages.c["boolean"];
+</script>
+
+
+</body>
+
+</html>
