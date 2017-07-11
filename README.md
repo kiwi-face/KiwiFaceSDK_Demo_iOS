@@ -1,4 +1,4 @@
-# 注：试用此SDK需要从网站自动生成绑定应用id的license文件，详细情况请查阅http://www.kiwiar.com/demo
+# 注：试用此SDK需要在[网站](http://www.kiwiar.com/demo)中注册，以获取绑定应用BundleID的License文件
 
 # 由开为科技开发的贴纸美颜滤镜SDK KiwiFace，iOS Demo
 KiwiFace人脸跟踪及特效（动态贴纸、美颜、滤镜、哈哈镜）的demo - iOS版

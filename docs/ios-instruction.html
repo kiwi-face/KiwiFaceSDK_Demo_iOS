@@ -502,13 +502,21 @@ pre[class*="language-"] {
 <h4 id="toc_5">编译代码示例</h4>
 
 <ol>
-<li><p>用XCode打开demo工程文件(PLMediaStreamingKitDemo)。代码包含以下目录结构</p>
+<li><p>用XCode打开demo工程文件(KiwifaceRecordingDemo)。代码包含以下目录结构</p>
 
 <p><img src="images/ios-project.jpg" alt=""></p></li>
-<li><p>将从官网下载下来的授权文件（试用此SDK需要从网站自动生成绑定应用id的license文件，详细情况请查阅http://www.kiwiar.com/demo）放入KWFaceSDK/Tracker/models目录下</p>
+<li><p>添加license文件</p>
 
-<p><img src="images/ios-license.jpg" alt=""></p></li>
-<li><p>选中项目，如下图所示，点击 &quot;Build and Run&quot; 按钮进行编译</p>
+<ul>
+<li>将从官网下载下来的授权文件（试用此SDK需要在<a href="http://www.kiwiar.com/demo">Kiwi官方网站</a>中注册，以获取绑定应用BundleID的License文件）放入KWFaceSDK/Tracker/models目录下</li>
+</ul>
+
+<p><img src="images/ios-license.jpg" alt=""></p>
+
+<ul>
+<li>请确认demo工程文件(KiwifaceRecordingDemo)的bundleID是否正确（网站注册时填写的bundleID）</li>
+</ul></li>
+<li><p>选中项目，点击 &quot;Build and Run&quot; 按钮进行编译</p>
 
 <p>示例截图</p></li>
 </ol>
@@ -721,7 +729,7 @@ https://github.com/lemenkov/libyuv.git</p></li>
 </tbody>
 </table>
 
-<p>编写config.json文件可使用我司提供的工具 https://apps.kiwiapp.mobi/sticker.html 进行调试生成。</p>
+<p>编写config.json文件可使用我司提供的<a href="https://apps.kiwiapp.mobi/sticker.html">贴纸配置网站</a>进行调试生成。</p>
 
 <h4 id="toc_11">第五步：调用API</h4>
 

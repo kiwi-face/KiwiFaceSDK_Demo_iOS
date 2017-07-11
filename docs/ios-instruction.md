@@ -34,15 +34,17 @@ kiwi人脸跟踪SDK，主要功能包括：
 
 #### 编译代码示例
 
-1. 用XCode打开demo工程文件(PLMediaStreamingKitDemo)。代码包含以下目录结构
+1. 用XCode打开demo工程文件(KiwifaceRecordingDemo)。代码包含以下目录结构
 
   ![](images/ios-project.jpg)
 
-2. 将从官网下载下来的授权文件（试用此SDK需要从网站自动生成绑定应用id的license文件，详细情况请查阅http://www.kiwiar.com/demo）放入KWFaceSDK/Tracker/models目录下
+2. 添加license文件
+  - 将从官网下载下来的授权文件（试用此SDK需要在[Kiwi官方网站](http://www.kiwiar.com/demo)中注册，以获取绑定应用BundleID的License文件）放入KWFaceSDK/Tracker/models目录下
 
 	![](images/ios-license.jpg)
-
-3. 选中项目，如下图所示，点击 "Build and Run" 按钮进行编译
+	
+  - 请确认demo工程文件(KiwifaceRecordingDemo)的bundleID是否正确（网站注册时填写的bundleID）
+3. 选中项目，点击 "Build and Run" 按钮进行编译
 
   示例截图
 
@@ -172,7 +174,7 @@ p.s. 该示例只支持在真机上实现功能，不支持模拟器。编译完
 	frameHeight | 图片的高
 	trigerType | 触发条件，默认0，始终显示
 
-  编写config.json文件可使用我司提供的工具 https://apps.kiwiapp.mobi/sticker.html 进行调试生成。
+  编写config.json文件可使用我司提供的[贴纸配置网站](https://apps.kiwiapp.mobi/sticker.html)进行调试生成。
 
 #### 第五步：调用API
 
