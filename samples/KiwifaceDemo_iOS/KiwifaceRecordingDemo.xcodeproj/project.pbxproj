@@ -1498,7 +1498,6 @@
 				TargetAttributes = {
 					168835141E45BE300016210E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = WE7ENGF8TR;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1876,7 +1875,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = WE7ENGF8TR;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1895,7 +1894,6 @@
 					"$(PROJECT_DIR)/KiwifaceRecordingDemo/KiwiFaceSDK/Tracker",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sobrr.KiwifaceRecording;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1906,7 +1904,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = WE7ENGF8TR;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1925,7 +1923,6 @@
 					"$(PROJECT_DIR)/KiwifaceRecordingDemo/KiwiFaceSDK/Tracker",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sobrr.KiwifaceRecording;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
