@@ -18,7 +18,7 @@ kiwi人脸跟踪SDK，主要功能包括：
 
 ## Demo快速入门
 
-该demo基于七牛的直播SDK，实现了在直播的场景下实现人脸跟踪以及趣味贴纸。
+该demo基于GPUImage的短视频录制，实现了在短视频录制的场景下实现人脸跟踪以及趣味贴纸。
 
 #### 准备环境
 
@@ -76,7 +76,7 @@ p.s. 该示例只支持在真机上实现功能，不支持模拟器。编译完
   - __自行下载__（若项目中已经存在则不需要下载）
 
     必选：
-    * GPUImage视频渲染基于GPUImage SDK
+    * GPUImage视频渲染基于GPUImage SDK（使用GPUImage短视频录制必须使用Demo中的GPUImage SDK）
   	https://github.com/BradLarson/GPUImage.git
     * opencv3.framework
   	https://sourceforge.net/projects/opencvlibrary/files/opencv-ios/3.0.0/
@@ -89,7 +89,7 @@ p.s. 该示例只支持在真机上实现功能，不支持模拟器。编译完
   - __系统库__ （xcode自带）
     * UIKit.framework
     * Foundation.framework
-
+    * libz.tbd
 
 #### 第三步：部署工程
 
@@ -202,23 +202,37 @@ cvMobileRotate ：屏幕方向（横竖屏）
 mirrored： 是否是镜像
 */
 [kwSdk.renderer processPixelBuffer:pixelBuffer withRotation:cvMobileRotate mirrored:mirrored];
+/* 
+最大跟踪人脸个数
+default:4
+1 <= maxFaceNumber <= 5
+*/
+self.kwSdkUI.kwSdk.maxFaceNumber = 5;
 ```
 
 ###### 使用sdk自带功能
 
 
-* 初始化具体功能：
+* 人脸关键点和贴纸：
 
-  * 初始化普通滤镜或贴纸集合
+  * 初始化人脸关键点和贴纸集合
 
     ```c
     self.filters = @[
        //描点
-       [FTPointsRenderer new],
+       [KWPointsRenderer new],
        //贴纸
-       [FTStickerRenderer new]
+       [KWStickerRenderer new]
     ];
     ```
+    * 调用人脸关键点和贴纸集合
+    
+    ```c
+		//调用描点
+		[self.renderer addFilter:self.filters[0]];
+		//调用贴纸
+		[self.renderer addFilter:self.filters[1]];
+      ```
 
   * 初始化哈哈镜滤镜集合
 
@@ -238,6 +252,7 @@ mirrored： 是否是镜像
     ```
 
   * 初始化美颜滤镜集合
+  
     ```c
     self.beautifyFilters = @[
          //大眼
@@ -274,8 +289,6 @@ mirrored： 是否是镜像
   ```c
   //调用美颜
   [self.renderer addFilter:self.beautifyNewFilters[0]];
-  //调用描点
-  [self.renderer addFilter:self.filters[0]];
   //调用哈哈镜
   [self.renderer addFilter:self.currentDistortionFilter];
   //调用滤镜
