@@ -5,7 +5,6 @@ kiwi人脸跟踪SDK，主要功能包括：
 - 静态图片的人脸以及关键点位置检测
 - 68个人脸关键点的实时检测与跟踪（单人脸/多人脸）
 - 美颜、哈哈镜等实时滤镜功能
-- 人脸Pose参数估计
 - 趣味2D贴纸
 
 我们的SDK针对移动端，在算法效率、硬件占用、性能精度等方面进行了相关优化，使其适用于移动端直播，美颜相机，滤镜相机，趣味贴纸，虚拟美妆等应用场景。
@@ -39,7 +38,7 @@ kiwi人脸跟踪SDK，主要功能包括：
   ![](images/ios-project.jpg)
 
 2. 添加license文件
-  - 将从官网下载下来的授权文件（试用此SDK需要在[Kiwi官方网站](http://www.kiwiar.com/demo)中注册，以获取绑定应用BundleID的License文件）放入KWFaceSDK/Tracker/models目录下
+  - 将从官网下载下来的授权文件（试用此SDK需要在[Kiwi官方网站](http://www.kiwiar.com/demo)中注册，以获取绑定应用BundleID的License文件）放入KiwiFaceSDK/Resource/KWResource.bundle/models目录下
 
 	![](images/ios-license.jpg)
 	
@@ -70,7 +69,7 @@ p.s. 该示例只支持在真机上实现功能，不支持模拟器。编译完
 
   - __kiwi提供__（请从sdk文件夹中获取）
     * libfaceTrackerSDK.a（人脸捕捉SDK）
-    * libKiwiFaceSDK.a（UI＋视频帧渲染SDK）
+    * libKwSDK.a（UI＋视频帧渲染SDK）
 
 
   - __自行下载__（若项目中已经存在则不需要下载）
@@ -91,40 +90,22 @@ p.s. 该示例只支持在真机上实现功能，不支持模拟器。编译完
     * Foundation.framework
     * libz.tbd
 
-#### 第三步：部署工程
+#### 第三步：导入工程
 
-1. 导入 libKiwiFaceSDK.a 文件和所有包含的头文件、实现文件、资源文件。（我们提供了两种libKiwiFaceSDK.a文件。libKiwiFaceSDK.a同时支持模拟器与真机，供开发调试使用。libKiwiFaceSDK_release.a仅支持真机，供发布使用。）
+1. 直接将KiwiFaceSDK文件夹拖入项目中即可,选择Create groups.(SDK中自带GPUimage.a,使用GPUImage短视频录制必须使用Demo中的GPUImage.a,其他则不需要)
 
-  ![](images/KiwiFaceSDK.jpg)
-
-2. 导入Tracker 人脸捕捉的SDK包和StickerManager。（我们提供了两种libfaceTrackerSDK.a文件。libfaceTrackerSDK_lic.a同时支持模拟器与真机，供开发调试使用。libfaceTrackerSDK_release.a仅支持真机，供发布使用。）
-
-  ![](images/Tracker.jpg)
-
-  ![](images/StickerManager.jpg)
-
-  这里注意tracker包的models文件夹和StickerManager文件夹下的stickers贴纸文件夹，必须只是导入引用，不要包含到项目工程里面来(文件夹图标为蓝色)。如下图设置：
-
-  ![](images/target-settings.png)
-
-3. 导入GPUImage，用于视频渲染（我们提供了两种libGPUImage.a文件。libGPUImage.a同时支持模拟器与真机，供开发调试使用。libGPUImage_release.a仅支持真机，供发布使用。）
-4. 如有需要，导入libyuv
-
-  sdk视频帧的渲染暂时只支持NV21格式的传入 如果应用视频帧是YUV或者其他视频流类型 需要导入视频流格式的转换类。
-
-5. 导入 opencv3.framework
+2. 导入opencv3.framework
 
   注意，从官网下载的包有可能被错误的命名为opencv2.framework。
 
 #### 第四步：贴纸配置
 
-  如果有需要，请配置贴纸。贴纸相关文件存放在stickers目录下，一套贴纸对应一个目录，每套贴纸包含一个config.json文件，其中配置了音效文件名及每个item参数等信息。其结构如下：
+  如果有需要，请配置贴纸。贴纸相关资源文件存放在stickers目录下，一套贴纸对应一个目录，每套贴纸包含一个config.json文件，其中配置了音效文件名及每个item参数等信息。其结构如下：
 
   ```
   |--[sticker_1] （贴纸1）
   |   |--config.json （贴纸配置文件）
   |   |--[audio]（音频文件）
-  |   |--[preview]（贴纸预览图）
   |   |--[item_1]（贴纸序列图文件夹1）
   |   |   |--[frame_1]（贴纸序列图1）
   |   |   |--[frame_2]（贴纸序列图2）
@@ -136,14 +117,14 @@ p.s. 该示例只支持在真机上实现功能，不支持模拟器。编译完
   |--[sticker_2]（贴纸2）
   |--...
   |--[sticker_n]（贴纸n）
-  |—StickerConfig.json（总配置文件）
+  |—stickers.json（总配置文件）
   ```
-  程序靠读取在stickers文件夹下的StickerConfig.json显示相应的贴纸和图标。
+  程序靠读取在StickerManager文件夹下的stickers.json显示相应的贴纸和图标。
   
 注意，使用贴纸云，需要在Info.plist中加入App Transport Security Settings字段，并将Allow Arbitrary Loads设置为YES。
   __具体的json文件格式如下：__
 
-  StickerConfig.json
+  stickers.json
 
   参数名称 | 意义
   --------|----------
@@ -176,38 +157,73 @@ p.s. 该示例只支持在真机上实现功能，不支持模拟器。编译完
 
   编写config.json文件可使用我司提供的[贴纸配置网站](https://apps.kiwiapp.mobi/sticker.html)进行调试生成。
 
-#### 第五步：调用API
+#### 第五步：滤镜配置
+
+如果有需要，请配置滤镜。滤镜相关资源文件存放在filter目录下，一套滤镜对应一个目录，每套滤镜包含filter.png（滤镜lookUpTable）和thumb.png（滤镜icon）文件。其结构如下：
+
+  ```
+  |--[filter_1] （滤镜1）
+  |   |--filter.png （滤镜lookUpTable）
+  |   |--thumb.png（滤镜icon）
+  |--[filter_2]（滤镜2）
+  |   |--thumb.png（滤镜icon）
+  |--...
+  |--[filter_n]（滤镜n）
+  |—filters.json（滤镜配置文件）
+  ```
+注意：资源文件里有filter.png（lookUpTable）图片的是单层滤镜。
+
+程序靠读取在filter文件夹下的filters.json显示相应的贴纸和图标。
+
+  __具体的filters.json文件格式如下：__
+
+| 参数名称       | 意义                                |
+| ---------- | ---------------------------------     |
+| name       | 滤镜的名称（UI显示和滤镜的识别）           |
+| dir        | 滤镜存放路径文件夹名称                    |
+| category   | 类别（滤镜类型的区分） 	
+
+#### 第六步：调用API
 
 ###### 使用SDK内置UI
 
 如果直接使用我们SDK内置的UI, 可以在页面的viewDidload里面初始化SDK。
 
 ```c
-/* 获得SDK操作类的实例对象 */
-self.kwSdkUI = [KiwiFaceSDK_UI shareManagerUI];
-/* 设置SDK内置UI的 ViewController 如果不用内置UI 不用设置 */
-[self.kwSdkUI setViewDelegate:self];
-/* 初始化SDK 一些渲染对象以及初始参数 */
-[self.kwSdkUI.kwSdk initSdk];
-/* 如果使用内置UI 该属性是判断是否清除原有项目的页面UI 如果原有UI功能少 可以用内置UI 替代 一般来说用不到 */
-self.kwSdkUI.isClearOldUI = NO;
- /* 初始化内置UI */
-[self.kwSdkUI initSDKUI];
+//1.创建 KWRenderManager对象  指定models文件路径 若不传则默认路径是KWResource.bundle/models
+    self.renderManager = [[KWRenderManager alloc] initWithModelPath:self.modelPath isCameraPositionBack:NO];
+    
+//2.KWSDK鉴权提示
+    if ([KWRenderManager renderInitCode] != 0) {
+        UIAlertView *alertView =
+        [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"KiwiFaceSDK初始化失败,错误码: %d", [KWRenderManager renderInitCode]] message:@"可在FaceTracker.h中查看错误码" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        
+        [alertView show];
+        
+        return;
+    }
+        
+//3.加载贴纸滤镜
+    [self.renderManager loadRender];
+    
+//4.初始化UIManager
+    self.UIManager = [[KWUIManager alloc] initWithRenderManager:self.renderManager delegate:self superView:self.view];
+    
+//5.如果使用内置UI 该属性是判断是否清除原有项目的页面UI 如果原有UI功能少 可以用内置UI 替代 一般来说用不到
+    self.UIManager.isClearOldUI = NO;
+    
+//6.创建内置UI
+    [self.UIManager createUI];
+
+
  /* 渲染视频帧，在每一帧视频代理函数中调用 */
-self.kwSdkUI.kwSdk = [KiwiFaceSDK sharedManager];
-/*
-对每一帧的视频图像进行人脸捕捉 并对当前选择的滤镜进行视频帧渲染
-pixelBuffer：每一帧的像素流
-cvMobileRotate ：屏幕方向（横竖屏）
-mirrored： 是否是镜像
-*/
-[kwSdk.renderer processPixelBuffer:pixelBuffer withRotation:cvMobileRotate mirrored:mirrored];
+[KWRenderManager processPixelBuffer:pixelBuffer]
 /* 
 最大跟踪人脸个数
 default:4
 1 <= maxFaceNumber <= 5
 */
-self.kwSdkUI.kwSdk.maxFaceNumber = 5;
+self.renderManager. maxFaceNumber = 5;
 ```
 
 ###### 使用sdk自带功能
@@ -218,98 +234,94 @@ self.kwSdkUI.kwSdk.maxFaceNumber = 5;
   * 初始化人脸关键点和贴纸集合
 
     ```c
-    self.filters = @[
-       //描点
-       [KWPointsRenderer new],
-       //贴纸
-       [KWStickerRenderer new]
-    ];
+    self.pointsRender = [[KWPointsRenderer alloc]init];
+    
+    self.stickerRender = [[KWStickerRenderer alloc]init];
     ```
     * 调用人脸关键点和贴纸集合
     
     ```c
-		//调用描点
-		[self.renderer addFilter:self.filters[0]];
-		//调用贴纸
-		[self.renderer addFilter:self.filters[1]];
-      ```
-
-  * 初始化哈哈镜滤镜集合
+	//调用描点
+	[self.renderer addFilter: self.pointsRender];
+	
+	//调用贴纸
+	[self.renderer addFilter: self.stickerRender];
+    ```
+* 哈哈镜：
+  * 初始化哈哈镜集合
 
     ```c       
     self.distortionFilters = @[
          //方脸
-         [GPUImageSquareFaceFilter new],
+         [SquareFaceDistortionFilter new],
          //ET脸
-         [ETnewFilter new],
+         [ETDistortionFilter new],
          //胖脸
-         [FatFaceFilter new],
+         [FatFaceDistortionFilter new],
          //蛇精脸
-         [SlimFaceFilter new],
+         [SlimFaceDistortionFilter new],
          //梨脸
          [PearFaceDistortionFilter new]
     ];
     ```
+   * 调用哈哈镜集合
 
-  * 初始化美颜滤镜集合
-  
     ```c
-    self.beautifyFilters = @[
-         //大眼
-         [SmallFaceBigEyeFilter new]
-    ];
+	//调用哈哈镜
+  	[self.renderer addFilter:self.currentDistortionFilter];
+	```
 
-    self.beautifyNewFilters = @[
-         //美颜
-         [GPUImageBeautifyFilter new]
-    ];
-    ```
+   * 去除哈哈镜
 
-  * 初始化全局滤镜集合
+  	```c
+  //去除哈哈镜
+  [self.renderer removeFilter:self.currentDistortionFilter];
+	```
   
-    ```c
-    self.lookupFilters = @[
-         //Nature
-         [[FTLookupFilter alloc] initWithType:FTLookupTypeNature],
-         //Sweety
-         [[FTLookupFilter alloc] initWithType:FTLookupTypeSweety],
-         //Clean
-         [[FTLookupFilter alloc] initWithType:FTLookupTypeClean],
-         //Peach
-         [[FTLookupFilter alloc] initWithType:FTLookupTypePeach],
-         //Rosy
-         [[FTLookupFilter alloc] initWithType:FTLookupTypeRosy],
-         //Urban
-         [[FTLookupFilter alloc] initWithType:FTLookupTypeUrban]
-    ];
-    ```
+* 美颜：
+  * 初始化美颜
 
-* 调用具体功能：
+    ```c
+    //大眼瘦脸滤镜
+    self.smallFaceBigEyeFilter = [[SmallFaceBigEyeFilter alloc]init];
+    
+    //美颜滤镜
+    self.beautyFilter = [[KWBeaytyFilter alloc]init];
+    ```
+  * 调用美颜
+
+    ```c
+	//调用美颜
+  	[self.renderer addFilter: self.beautyFilter];      
+  	```
+   * 去除美颜
+
+  	```c
+  //去除美颜
+  [self.renderer removeFilter: self.beautyFilter];
+  	```
+
+* 全局滤镜：
+  * 调用滤镜
 
   ```c
-  //调用美颜
-  [self.renderer addFilter:self.beautifyNewFilters[0]];
-  //调用哈哈镜
-  [self.renderer addFilter:self.currentDistortionFilter];
-  //调用滤镜
-  [self.renderer addFilter:self.currentLookupFilter];
-  //调用贴纸
-  [self.renderer addFilter:self.filters[1]];
-  ```
+	//调用美颜
+  	[self.renderer addFilter:self.currentColorFilter];     
+  	```
 
 * 去除具体功能：
 
   ```c
   //去除美颜
-  [self.renderer removeFilter:self.beautifyNewFilters[0]];
+  [self.renderer removeFilter: self.beautyFilter];
   //去除描点
-  [self.renderer removeFilter:self.filters[0]];
+  [self.renderer removeFilter: self.pointsRender];
   //去除哈哈镜
   [self.renderer removeFilter:self.currentDistortionFilter];
   //去除滤镜
   [self.renderer removeFilter:self.currentLookupFilter];
   //去除贴纸
-  [(FTStickerRenderer *)self.filters[1] setSticker:nil];
+  [self.stickerRender setSticker:nil];
   ```
 
 ###### 自定义功能扩展
@@ -319,14 +331,14 @@ self.kwSdkUI.kwSdk.maxFaceNumber = 5;
   在 sdk入口类中，有一个类型为KWRenderer的渲染类，由他来控制滤镜的增加。
   
   ```
-  [KiwiFaceSDK.KWRenderer addFilter: GPUImageOutput<GPUImageInput, KWRenderProtocol> *];
+  [KWRenderManager.KWRenderer addFilter: GPUImageOutput<GPUImageInput, KWRenderProtocol> *];
   ```
   滤镜对象必须遵守GPUImageInput和KWRenderProtocol两个协议才能正常被人脸捕捉和渲染。
 
 * 删除特定滤镜，停止渲染：
 
   ```
-  [KiwiFaceSDK.KWRenderer removeFilter: GPUImageOutput<GPUImageInput, KWRenderProtocol> *];
+  [KWRenderManager.KWRenderer removeFilter: GPUImageOutput<GPUImageInput, KWRenderProtocol> *];
   ```
 * 人脸捕捉之后，在渲染视频帧之前可以对每一帧图像做自定义处理的回调block：
 
@@ -346,5 +358,5 @@ self.kwSdkUI.kwSdk.maxFaceNumber = 5;
 我们建议在离开页面的时候释放内存
 
 ```c
-[KiwiFaceSDK releaseManager];
+[self.renderManager releaseManager];
 ```

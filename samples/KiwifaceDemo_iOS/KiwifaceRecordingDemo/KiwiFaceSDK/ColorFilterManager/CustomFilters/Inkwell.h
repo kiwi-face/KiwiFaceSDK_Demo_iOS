@@ -7,11 +7,11 @@
 
 @end
 
-@interface Inkwell : GPUImageFilterGroup<KWRenderProtocol>
+@interface Inkwell : GPUImageFilterGroup <KWRenderProtocol>
 {
     GPUImagePicture *imageSource;
 }
 
-@property (nonatomic, readonly) BOOL needTrackData;
+@property(nonatomic, readonly) BOOL needTrackData;
 
 @end

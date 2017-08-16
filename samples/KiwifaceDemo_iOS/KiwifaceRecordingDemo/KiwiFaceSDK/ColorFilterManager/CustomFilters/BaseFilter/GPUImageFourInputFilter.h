@@ -3,7 +3,7 @@
 
 extern NSString *const kGPUImageFourInputTextureVertexShaderString;
 
-@interface GPUImageFourInputFilter : GPUImageThreeInputFilter<KWRenderProtocol>
+@interface GPUImageFourInputFilter : GPUImageThreeInputFilter <KWRenderProtocol>
 {
     GPUImageFramebuffer *fourthInputFramebuffer;
 
@@ -12,7 +12,7 @@ extern NSString *const kGPUImageFourInputTextureVertexShaderString;
     GPUImageRotationMode inputRotation4;
     GLuint filterSourceTexture4;
     CMTime fourthFrameTime;
-    
+
     BOOL hasSetThirdTexture, hasReceivedFourthFrame, fourthFrameWasVideo;
     BOOL fourthFrameCheckDisabled;
 }

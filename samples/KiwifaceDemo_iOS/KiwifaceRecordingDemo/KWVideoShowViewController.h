@@ -7,15 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KWSDK_UI.h"
+#import "KWUIManager.h"
 
 @interface KWVideoShowViewController : UIViewController
 
-/**
- sdk UI action object
- */
-@property (nonatomic, strong) KWSDK_UI *kwSdkUI;
-
-@property (nonatomic,copy)NSString *modelPath;
-
+@property(nonatomic, copy) NSString *modelPath;
 @end

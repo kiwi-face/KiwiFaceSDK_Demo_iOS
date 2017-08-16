@@ -33,8 +33,6 @@
 	<string>此应用需要使用麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>我们需要访问您的照片库</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

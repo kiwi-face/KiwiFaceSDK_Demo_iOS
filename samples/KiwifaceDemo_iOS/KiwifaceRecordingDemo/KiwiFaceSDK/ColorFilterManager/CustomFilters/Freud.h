@@ -1,6 +1,6 @@
 //
 //  Freud.h
-//  KwSDK
+//  KWRenderManager
 //
 //  Created by 伍科 on 17/5/18.
 //  Copyright © 2017年 PLMediaStreamingSDK. All rights reserved.
@@ -14,11 +14,11 @@
 
 @end
 
-@interface Freud : GPUImageFilterGroup<KWRenderProtocol>
+@interface Freud : GPUImageFilterGroup <KWRenderProtocol>
 {
     GPUImagePicture *imageSource;
 }
 
-@property (nonatomic, readonly) BOOL needTrackData;
+@property(nonatomic, readonly) BOOL needTrackData;
 
 @end
