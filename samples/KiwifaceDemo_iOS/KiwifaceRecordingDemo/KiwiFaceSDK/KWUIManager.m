@@ -1249,21 +1249,20 @@ static NSString *KWFilterCellIdentifier = @"KWFilterCellIdentifier";
         _NewBeautifySliderPinkistender =
                 [[UISlider alloc] initWithFrame:CGRectMake(120 - 10, 138 + 52 + 15, ScreenWidth_KW - 67 - 32 - 20 - 30 - 20, 20)];
 
-        //磨皮指定可变最小值
+        //粉嫩指定可变最小值
         _NewBeautifySliderPinkistender.minimumValue = 0;
 
-        //磨皮指定可变最大值
+        //粉嫩指定可变最大值
         _NewBeautifySliderPinkistender.maximumValue = 100;
 
-        //磨皮指定初始值
+        //粉嫩指定初始值
         if (![KWSaveData floatForKey:@"KWSliderPinkistender"]) {
-
             _NewBeautifySliderPinkistender.value = 56;
             [KWSaveData setFloat:56 forKey:@"KWSliderPinkistender"];
 
         } else {
-
             _NewBeautifySliderPinkistender.value = [KWSaveData floatForKey:@"KWSliderPinkistender"];
+            
         }
 
         [self.renderManager onNewBeautyParamsChanged:KW_NEWBEAUTY_TYPE_SKINTENDERNESS value:_NewBeautifySliderPinkistender.value];

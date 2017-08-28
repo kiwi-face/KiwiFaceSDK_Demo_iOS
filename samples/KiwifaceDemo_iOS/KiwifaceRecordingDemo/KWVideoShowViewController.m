@@ -160,29 +160,29 @@
     //1.创建 KWRenderManager对象,指定models文件路径 若不传则默认路径是KWResource.bundle/models
     self.renderManager = [[KWRenderManager alloc] initWithModelPath:self.modelPath isCameraPositionBack:NO];
     
-    //2.KWSDK鉴权提示
-    if ([KWRenderManager renderInitCode] != 0) {
-        UIAlertView *alertView =
-        [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"KiwiFaceSDK初始化失败,错误码: %d", [KWRenderManager renderInitCode]] message:@"可在FaceTracker.h中查看错误码" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        
-        [alertView show];
-        
-        return;
-    }
-    
     //3.加载贴纸滤镜
     [self.renderManager loadRender];
+}
+
+- (void)verifyFailed{
+    UIAlertView *alertView =
+    [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"KiwiFaceSDK初始化失败,错误码: %d", [KWRenderManager renderInitCode]] message:@"可在FaceTracker.h中查看错误码" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     
+    [alertView show];
 }
 
 #pragma mark -初始化KiwiFace的演示UI
 - (void)initKiwiFaceUI{
     //1.初始化UIManager
     self.UIManager = [[KWUIManager alloc] initWithRenderManager:self.renderManager delegate:self superView:self.view];
+    
     //2.是否清除原UI
     self.UIManager.isClearOldUI = NO;
     
-    //3.创建内置UI
+    /*
+        3.创建内置UI
+        createUI 要放在最后
+     */
     [self.UIManager createUI];
 }
 

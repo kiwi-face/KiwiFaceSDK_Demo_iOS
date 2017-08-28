@@ -3,6 +3,7 @@
 #import "Global.h"
 
 @interface KWBeautyFilter : GPUImageFilter<KWRenderProtocol> {
+    GLint brightLevelUniform,paramsUniform,pinkLevelUniform;
 }
 
 @property (nonatomic, assign) CGFloat beautyLevel;//美白

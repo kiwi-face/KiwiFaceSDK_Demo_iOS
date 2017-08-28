@@ -75,6 +75,7 @@ typedef void(^RenderAndGetFacePointsBlock)
 //Whether to open the face stickers
 @property(nonatomic, assign) BOOL isEnableSmiliesSticker;
 
+
 //是否开启换脸
 @property(nonatomic, assign) BOOL isEnableAutomaticFace;
 
@@ -96,8 +97,6 @@ typedef void(^RenderAndGetFacePointsBlock)
 
 - (instancetype)initWithModelPath:(NSString *)modelPath;
 
-+ (BOOL)isSdkInitFailed;
-
 + (int)renderInitCode;
 
 //检查表情贴纸是否正在播放
@@ -106,3 +105,5 @@ typedef void(^RenderAndGetFacePointsBlock)
 + (float)beautyParamWithValue:(float)value type:(KW_NEWBEAUTY_TYPE)type;
 
 @end
+
+UIKIT_EXTERN NSString *const KWVerifyFailededNotification;
