@@ -472,7 +472,6 @@ pre[class*="language-"] {
 <li>静态图片的人脸以及关键点位置检测</li>
 <li>68个人脸关键点的实时检测与跟踪（单人脸/多人脸）</li>
 <li>美颜、哈哈镜等实时滤镜功能</li>
-<li>人脸Pose参数估计</li>
 <li>趣味2D贴纸</li>
 </ul>
 
@@ -486,7 +485,7 @@ pre[class*="language-"] {
 
 <h2 id="toc_2">Demo快速入门</h2>
 
-<p>该demo基于七牛的直播SDK，实现了在直播的场景下实现人脸跟踪以及趣味贴纸。</p>
+<p>该demo基于GPUImage的短视频录制，实现了在短视频录制的场景下实现人脸跟踪以及趣味贴纸。</p>
 
 <h4 id="toc_3">准备环境</h4>
 
@@ -508,7 +507,7 @@ pre[class*="language-"] {
 <li><p>添加license文件</p>
 
 <ul>
-<li>将从官网下载下来的授权文件（试用此SDK需要在<a href="http://www.kiwiar.com/demo">Kiwi官方网站</a>中注册，以获取绑定应用BundleID的License文件）放入KWFaceSDK/Tracker/models目录下</li>
+<li>将从官网下载下来的授权文件（试用此SDK需要在<a href="http://www.kiwiar.com/demo">Kiwi官方网站</a>中注册，以获取绑定应用BundleID的License文件）放入KiwiFaceSDK/Resource/KWResource.bundle/models目录下</li>
 </ul>
 
 <p><img src="images/ios-license.jpg" alt=""></p>
@@ -543,14 +542,14 @@ pre[class*="language-"] {
 
 <ul>
 <li>libfaceTrackerSDK.a（人脸捕捉SDK）</li>
-<li>libKiwiFaceSDK.a（UI＋视频帧渲染SDK）</li>
+<li>libKwSDK.a（UI＋视频帧渲染SDK）</li>
 </ul></li>
 <li><p><strong>自行下载</strong>（若项目中已经存在则不需要下载）</p>
 
 <p>必选：</p>
 
 <ul>
-<li>GPUImage视频渲染基于GPUImage SDK
+<li>GPUImage视频渲染基于GPUImage SDK（使用GPUImage短视频录制必须使用Demo中的GPUImage SDK）
 https://github.com/BradLarson/GPUImage.git</li>
 <li>opencv3.framework
 https://sourceforge.net/projects/opencvlibrary/files/opencv-ios/3.0.0/</li>
@@ -564,41 +563,26 @@ https://github.com/lemenkov/libyuv.git</p></li>
 <ul>
 <li>UIKit.framework</li>
 <li>Foundation.framework</li>
+<li>libz.tbd</li>
 </ul></li>
 </ul>
 
-<h4 id="toc_9">第三步：部署工程</h4>
+<h4 id="toc_9">第三步：导入工程</h4>
 
 <ol>
-<li><p>导入 libKiwiFaceSDK.a 文件和所有包含的头文件、实现文件、资源文件。（我们提供了两种libKiwiFaceSDK.a文件。libKiwiFaceSDK.a同时支持模拟器与真机，供开发调试使用。libKiwiFaceSDK_release.a仅支持真机，供发布使用。）</p>
-
-<p><img src="images/KiwiFaceSDK.jpg" alt=""></p></li>
-<li><p>导入Tracker 人脸捕捉的SDK包和StickerManager。（我们提供了两种libfaceTrackerSDK.a文件。libfaceTrackerSDK<em>lic.a同时支持模拟器与真机，供开发调试使用。libfaceTrackerSDK</em>release.a仅支持真机，供发布使用。）</p>
-
-<p><img src="images/Tracker.jpg" alt=""></p>
-
-<p><img src="images/StickerManager.jpg" alt=""></p>
-
-<p>这里注意tracker包的models文件夹和StickerManager文件夹下的stickers贴纸文件夹，必须只是导入引用，不要包含到项目工程里面来(文件夹图标为蓝色)。如下图设置：</p>
-
-<p><img src="images/target-settings.png" alt=""></p></li>
-<li><p>导入GPUImage，用于视频渲染（我们提供了两种libGPUImage.a文件。libGPUImage.a同时支持模拟器与真机，供开发调试使用。libGPUImage_release.a仅支持真机，供发布使用。）</p></li>
-<li><p>如有需要，导入libyuv</p>
-
-<p>sdk视频帧的渲染暂时只支持NV21格式的传入 如果应用视频帧是YUV或者其他视频流类型 需要导入视频流格式的转换类。</p></li>
-<li><p>导入 opencv3.framework</p>
+<li><p>直接将KiwiFaceSDK文件夹拖入项目中即可,选择Create groups.(SDK中自带GPUimage.a,使用GPUImage短视频录制必须使用Demo中的GPUImage.a,其他则不需要)</p></li>
+<li><p>导入opencv3.framework</p>
 
 <p>注意，从官网下载的包有可能被错误的命名为opencv2.framework。</p></li>
 </ol>
 
 <h4 id="toc_10">第四步：贴纸配置</h4>
 
-<p>如果有需要，请配置贴纸。贴纸相关文件存放在stickers目录下，一套贴纸对应一个目录，每套贴纸包含一个config.json文件，其中配置了音效文件名及每个item参数等信息。其结构如下：</p>
+<p>如果有需要，请配置贴纸。贴纸相关资源文件存放在stickers目录下，一套贴纸对应一个目录，每套贴纸包含一个config.json文件，其中配置了音效文件名及每个item参数等信息。其结构如下：</p>
 
 <div><pre><code class="language-none">  |--[sticker_1] （贴纸1）
   |   |--config.json （贴纸配置文件）
   |   |--[audio]（音频文件）
-  |   |--[preview]（贴纸预览图）
   |   |--[item_1]（贴纸序列图文件夹1）
   |   |   |--[frame_1]（贴纸序列图1）
   |   |   |--[frame_2]（贴纸序列图2）
@@ -610,14 +594,14 @@ https://github.com/lemenkov/libyuv.git</p></li>
   |--[sticker_2]（贴纸2）
   |--...
   |--[sticker_n]（贴纸n）
-  |—StickerConfig.json（总配置文件）</code></pre></div>
+  |—stickers.json（总配置文件）</code></pre></div>
 
-<p>程序靠读取在stickers文件夹下的StickerConfig.json显示相应的贴纸和图标。</p>
+<p>程序靠读取在StickerManager文件夹下的stickers.json显示相应的贴纸和图标。</p>
 
 <p>注意，使用贴纸云，需要在Info.plist中加入App Transport Security Settings字段，并将Allow Arbitrary Loads设置为YES。
   <strong>具体的json文件格式如下：</strong></p>
 
-<p>StickerConfig.json</p>
+<p>stickers.json</p>
 
 <table>
 <thead>
@@ -731,137 +715,204 @@ https://github.com/lemenkov/libyuv.git</p></li>
 
 <p>编写config.json文件可使用我司提供的<a href="https://apps.kiwiapp.mobi/sticker.html">贴纸配置网站</a>进行调试生成。</p>
 
-<h4 id="toc_11">第五步：调用API</h4>
+<h4 id="toc_11">第五步：滤镜配置</h4>
 
-<h6 id="toc_12">使用SDK内置UI</h6>
+<p>如果有需要，请配置滤镜。滤镜相关资源文件存放在filter目录下，一套滤镜对应一个目录，每套滤镜包含filter.png（滤镜lookUpTable）和thumb.png（滤镜icon）文件。其结构如下：</p>
+
+<div><pre><code class="language-none">  |--[filter_1] （滤镜1）
+  |   |--filter.png （滤镜lookUpTable）
+  |   |--thumb.png（滤镜icon）
+  |--[filter_2]（滤镜2）
+  |   |--thumb.png（滤镜icon）
+  |--...
+  |--[filter_n]（滤镜n）
+  |—filters.json（滤镜配置文件）</code></pre></div>
+
+<p>注意：资源文件里有filter.png（lookUpTable）图片的是单层滤镜。</p>
+
+<p>程序靠读取在filter文件夹下的filters.json显示相应的贴纸和图标。</p>
+
+<p><strong>具体的filters.json文件格式如下：</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>意义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>name</td>
+<td>滤镜的名称（UI显示和滤镜的识别）</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>滤镜存放路径文件夹名称</td>
+</tr>
+<tr>
+<td>category</td>
+<td>类别（滤镜类型的区分）</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="toc_12">第六步：调用API</h4>
+
+<h6 id="toc_13">使用SDK内置UI</h6>
 
 <p>如果直接使用我们SDK内置的UI, 可以在页面的viewDidload里面初始化SDK。</p>
 
-<div><pre><code class="language-c">/* 获得SDK操作类的实例对象 */
-self.kwSdkUI = [KiwiFaceSDK_UI shareManagerUI];
-/* 设置SDK内置UI的 ViewController 如果不用内置UI 不用设置 */
-[self.kwSdkUI setViewDelegate:self];
-/* 初始化SDK 一些渲染对象以及初始参数 */
-[self.kwSdkUI.kwSdk initSdk];
-/* 如果使用内置UI 该属性是判断是否清除原有项目的页面UI 如果原有UI功能少 可以用内置UI 替代 一般来说用不到 */
-self.kwSdkUI.isClearOldUI = NO;
- /* 初始化内置UI */
-[self.kwSdkUI initSDKUI];
+<div><pre><code class="language-c">//1.创建 KWRenderManager对象  指定models文件路径 若不传则默认路径是KWResource.bundle/models
+    self.renderManager = [[KWRenderManager alloc] initWithModelPath:self.modelPath isCameraPositionBack:NO];
+    
+//2.KWSDK鉴权提示
+    if ([KWRenderManager renderInitCode] != 0) {
+        UIAlertView *alertView =
+        [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@&quot;KiwiFaceSDK初始化失败,错误码: %d&quot;, [KWRenderManager renderInitCode]] message:@&quot;可在FaceTracker.h中查看错误码&quot; delegate:self cancelButtonTitle:@&quot;取消&quot; otherButtonTitles:@&quot;确定&quot;, nil];
+        
+        [alertView show];
+        
+        return;
+    }
+        
+//3.加载贴纸滤镜
+    [self.renderManager loadRender];
+    
+//4.初始化UIManager
+    self.UIManager = [[KWUIManager alloc] initWithRenderManager:self.renderManager delegate:self superView:self.view];
+    
+//5.如果使用内置UI 该属性是判断是否清除原有项目的页面UI 如果原有UI功能少 可以用内置UI 替代 一般来说用不到
+    self.UIManager.isClearOldUI = NO;
+    
+//6.创建内置UI
+    [self.UIManager createUI];
+
+
  /* 渲染视频帧，在每一帧视频代理函数中调用 */
-self.kwSdkUI.kwSdk = [KiwiFaceSDK sharedManager];
-/*
-对每一帧的视频图像进行人脸捕捉 并对当前选择的滤镜进行视频帧渲染
-pixelBuffer：每一帧的像素流
-cvMobileRotate ：屏幕方向（横竖屏）
-mirrored： 是否是镜像
+[KWRenderManager processPixelBuffer:pixelBuffer]
+/* 
+最大跟踪人脸个数
+default:4
+1 &lt;= maxFaceNumber &lt;= 5
 */
-[kwSdk.renderer processPixelBuffer:pixelBuffer withRotation:cvMobileRotate mirrored:mirrored];</code></pre></div>
+self.renderManager. maxFaceNumber = 5;</code></pre></div>
 
-<h6 id="toc_13">使用sdk自带功能</h6>
-
-<ul>
-<li><p>初始化具体功能：</p>
+<h6 id="toc_14">使用sdk自带功能</h6>
 
 <ul>
-<li>初始化普通滤镜或贴纸集合</li>
+<li><p>人脸关键点和贴纸：</p>
+
+<ul>
+<li>初始化人脸关键点和贴纸集合</li>
 </ul>
 
-<div><pre><code class="language-c">self.filters = @[
-   //描点
-   [FTPointsRenderer new],
-   //贴纸
-   [FTStickerRenderer new]
-];</code></pre></div>
+<div><pre><code class="language-c">self.pointsRender = [[KWPointsRenderer alloc]init];
+
+self.stickerRender = [[KWStickerRenderer alloc]init];</code></pre></div>
 
 <ul>
-<li>初始化哈哈镜滤镜集合</li>
+<li>调用人脸关键点和贴纸集合</li>
+</ul>
+
+<div><pre><code class="language-c">//调用描点
+[self.renderer addFilter: self.pointsRender];
+
+//调用贴纸
+[self.renderer addFilter: self.stickerRender];</code></pre></div></li>
+<li><p>哈哈镜：</p>
+
+<ul>
+<li>初始化哈哈镜集合</li>
 </ul>
 
 <div><pre><code class="language-c">self.distortionFilters = @[
      //方脸
-     [GPUImageSquareFaceFilter new],
+     [SquareFaceDistortionFilter new],
      //ET脸
-     [ETnewFilter new],
+     [ETDistortionFilter new],
      //胖脸
-     [FatFaceFilter new],
+     [FatFaceDistortionFilter new],
      //蛇精脸
-     [SlimFaceFilter new],
+     [SlimFaceDistortionFilter new],
      //梨脸
      [PearFaceDistortionFilter new]
 ];</code></pre></div>
 
 <ul>
-<li>初始化美颜滤镜集合
-```c
-self.beautifyFilters = @[
- //大眼
- [SmallFaceBigEyeFilter new]
-];</li>
+<li>调用哈哈镜集合</li>
 </ul>
 
-<p>self.beautifyNewFilters = @[
-     //美颜
-     [GPUImageBeautifyFilter new]
-];
-```</p>
+<div><pre><code class="language-c">//调用哈哈镜
+[self.renderer addFilter:self.currentDistortionFilter];</code></pre></div>
 
 <ul>
-<li>初始化全局滤镜集合</li>
+<li>去除哈哈镜</li>
 </ul>
 
-<div><pre><code class="language-c">self.lookupFilters = @[
-     //Nature
-     [[FTLookupFilter alloc] initWithType:FTLookupTypeNature],
-     //Sweety
-     [[FTLookupFilter alloc] initWithType:FTLookupTypeSweety],
-     //Clean
-     [[FTLookupFilter alloc] initWithType:FTLookupTypeClean],
-     //Peach
-     [[FTLookupFilter alloc] initWithType:FTLookupTypePeach],
-     //Rosy
-     [[FTLookupFilter alloc] initWithType:FTLookupTypeRosy],
-     //Urban
-     [[FTLookupFilter alloc] initWithType:FTLookupTypeUrban]
-];</code></pre></div></li>
-<li><p>调用具体功能：</p>
+<div><pre><code class="language-c">//去除哈哈镜
+[self.renderer removeFilter:self.currentDistortionFilter];</code></pre></div></li>
+<li><p>美颜：</p>
+
+<ul>
+<li>初始化美颜</li>
+</ul>
+
+<div><pre><code class="language-c">//大眼瘦脸滤镜
+self.smallFaceBigEyeFilter = [[SmallFaceBigEyeFilter alloc]init];
+
+//美颜滤镜
+self.beautyFilter = [[KWBeaytyFilter alloc]init];</code></pre></div>
+
+<ul>
+<li>调用美颜</li>
+</ul>
 
 <div><pre><code class="language-c">//调用美颜
-[self.renderer addFilter:self.beautifyNewFilters[0]];
-//调用描点
-[self.renderer addFilter:self.filters[0]];
-//调用哈哈镜
-[self.renderer addFilter:self.currentDistortionFilter];
-//调用滤镜
-[self.renderer addFilter:self.currentLookupFilter];
-//调用贴纸
-[self.renderer addFilter:self.filters[1]];</code></pre></div></li>
+[self.renderer addFilter: self.beautyFilter];      </code></pre></div>
+
+<ul>
+<li>去除美颜</li>
+</ul>
+
+<div><pre><code class="language-c">//去除美颜
+[self.renderer removeFilter: self.beautyFilter];</code></pre></div></li>
+<li><p>全局滤镜：</p>
+
+<ul>
+<li>调用滤镜</li>
+</ul>
+
+<div><pre><code class="language-c">//调用美颜
+[self.renderer addFilter:self.currentColorFilter];     </code></pre></div></li>
 <li><p>去除具体功能：</p>
 
 <div><pre><code class="language-c">//去除美颜
-[self.renderer removeFilter:self.beautifyNewFilters[0]];
+[self.renderer removeFilter: self.beautyFilter];
 //去除描点
-[self.renderer removeFilter:self.filters[0]];
+[self.renderer removeFilter: self.pointsRender];
 //去除哈哈镜
 [self.renderer removeFilter:self.currentDistortionFilter];
 //去除滤镜
 [self.renderer removeFilter:self.currentLookupFilter];
 //去除贴纸
-[(FTStickerRenderer *)self.filters[1] setSticker:nil];</code></pre></div></li>
+[self.stickerRender setSticker:nil];</code></pre></div></li>
 </ul>
 
-<h6 id="toc_14">自定义功能扩展</h6>
+<h6 id="toc_15">自定义功能扩展</h6>
 
 <ul>
 <li><p>增加特定滤镜，进行渲染：</p>
 
 <p>在 sdk入口类中，有一个类型为KWRenderer的渲染类，由他来控制滤镜的增加。</p>
 
-<div><pre><code class="language-none">[KiwiFaceSDK.KWRenderer addFilter: GPUImageOutput&lt;GPUImageInput, KWRenderProtocol&gt; *];</code></pre></div>
+<div><pre><code class="language-none">[KWRenderManager.KWRenderer addFilter: GPUImageOutput&lt;GPUImageInput, KWRenderProtocol&gt; *];</code></pre></div>
 
 <p>滤镜对象必须遵守GPUImageInput和KWRenderProtocol两个协议才能正常被人脸捕捉和渲染。</p></li>
 <li><p>删除特定滤镜，停止渲染：</p>
 
-<div><pre><code class="language-none">[KiwiFaceSDK.KWRenderer removeFilter: GPUImageOutput&lt;GPUImageInput, KWRenderProtocol&gt; *];</code></pre></div></li>
+<div><pre><code class="language-none">[KWRenderManager.KWRenderer removeFilter: GPUImageOutput&lt;GPUImageInput, KWRenderProtocol&gt; *];</code></pre></div></li>
 <li><p>人脸捕捉之后，在渲染视频帧之前可以对每一帧图像做自定义处理的回调block：</p>
 
 <div><pre><code class="language-none">typedef void (^RenderAndGetFacePointsBlock)(unsigned char *pixels, int format, int width, int height,result_68_t *p_result, int rstNum, int orientation,int faceNum);
@@ -877,11 +928,11 @@ self.beautifyFilters = @[
 </ul></li>
 </ul>
 
-<h6 id="toc_15">释放内存</h6>
+<h6 id="toc_16">释放内存</h6>
 
 <p>我们建议在离开页面的时候释放内存</p>
 
-<div><pre><code class="language-c">[KiwiFaceSDK releaseManager];</code></pre></div>
+<div><pre><code class="language-c">[self.renderManager releaseManager];</code></pre></div>
 
 
 
