@@ -115,6 +115,8 @@
     
     [self.view addSubview:self.labRecordState];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyFailed) name:KWVerifyFailededNotification object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:)
                                                  name:UIApplicationWillResignActiveNotification object:nil]; //监听是否触发home键挂起程序.
     
@@ -545,11 +547,12 @@
     [KWRenderManager processPixelBuffer:pixelBuffer];
     
     if (!self.renderManager.renderer.trackResultState) {
+        NSLog(@"没有捕捉到人脸");
         //没有捕捉到人脸
     } else {
+        NSLog(@"捕捉到人脸");
         //捕捉到人脸
     }
-    
     /*********** 如果有拍照功能则加上***********/
     self.outputImage = [CIImage imageWithCVPixelBuffer:pixelBuffer];
     self.outputWidth = CVPixelBufferGetWidth(pixelBuffer);
@@ -583,6 +586,8 @@
     
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:KWVerifyFailededNotification object:nil];
         
         [self.UIManager popAllView];
         
