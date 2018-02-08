@@ -279,10 +279,8 @@ static NSString *KWFilterCellIdentifier = @"KWFilterCellIdentifier";
         [tapView setHidden:YES];
 
 //        [self.superView addSubview:self.presentSwitchBtn];
-
+//
 //        [self.superView addSubview:self.smiliesSwitchBtn];
-
-//        [self.superView addSubview:self.btnIsEnableGrabCut];
         
         [self.superView addSubview:self.closeVideoBtn];
 
@@ -574,8 +572,10 @@ static NSString *KWFilterCellIdentifier = @"KWFilterCellIdentifier";
 
         [_mainMenuView addSubview:self.stickerOptionsBtn];
 
+/*********************若使用哈哈镜功能请将此段代码打开********************************/
 //        [_mainMenuView addSubview:self.distortionOptionsBtn];
-
+/******************************************************************************/
+        
         [_mainMenuView addSubview:self.slideGlobalBeautifyOptionsBtn];
     }
     return _mainMenuView;
@@ -1464,18 +1464,6 @@ static NSString *KWFilterCellIdentifier = @"KWFilterCellIdentifier";
     return _smiliesStateText;
 }
 
-- (UIButton *)btnIsEnableGrabCut {
-    if (!_btnIsEnableGrabCut) {
-        _btnIsEnableGrabCut = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth_KW - 60) / 2., 0, 60, 60)];
-        [_btnIsEnableGrabCut setImage:[UIImage imageNamed:@"cutoutIcon"] forState:UIControlStateNormal];
-        [_btnIsEnableGrabCut setImage:[UIImage imageNamed:@"cutoutIconDown"] forState:UIControlStateSelected];
-
-        [_btnIsEnableGrabCut addTarget:self action:@selector(btnIsEnableGrabCutOnTap:) forControlEvents:UIControlEventTouchUpInside];
-
-    }
-    return _btnIsEnableGrabCut;
-}
-
 - (UIView *)recordCircleView {
     if (!_recordCircleView) {
         _recordCircleView = [[UIView alloc] init];
@@ -1510,11 +1498,6 @@ static NSString *KWFilterCellIdentifier = @"KWFilterCellIdentifier";
 - (void)closeVideoBtnOnClick:(UIButton *)sender {
 
     [self closeVideoWindow];
-}
-
-- (void)btnIsEnableGrabCutOnTap:(UIButton *)sender {
-    [sender setSelected:!sender.selected];
-//    self.renderManager.renderer.isEnableCutOut = sender.isSelected;
 }
 
 - (void)offPhoneBtnOnClick:(UIButton *)sender {
@@ -2334,8 +2317,6 @@ static NSString *KWFilterCellIdentifier = @"KWFilterCellIdentifier";
 
     self.toggleBtn = nil;
 
-    self.btnIsEnableGrabCut = nil;
-
     self.closeVideoBtn = nil;
 
     self.offPhoneBtn = nil;
@@ -2401,6 +2382,8 @@ static NSString *KWFilterCellIdentifier = @"KWFilterCellIdentifier";
     self.smiliesSwitchBtn = nil;
 
     self.previewView = nil;
+
+    [[KWStickerDownloadManager sharedInstance] clearDownloadCache];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"KW_STICKERSLOADED_COMPLETE" object:nil];
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "KWRenderProtocol.h"
 #import "GPUImage.h"
-#import "GPUImageFourInputFilter.h"
+#import "FourInputFilter.h"
 
 @interface LutFilter : GPUImageTwoInputFilter
 

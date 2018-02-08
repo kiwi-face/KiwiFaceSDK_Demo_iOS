@@ -66,7 +66,7 @@
 
 /**
  The execution block of the operation can be customized before the video frame is captured after rendering
- 
+
  @param pixels pixelbuffer
  @param format 0：bgra 1：yuv
  @param width width value of pixelbuffer
@@ -77,7 +77,7 @@
  @param faceNum max track faces count
  */
 typedef void(^RenderAndGetFacePointsBlock)
-(unsigned char *pixels, int format, int width, int height, result_68_t *p_result, int rstNum, int orientation, int faceNum);
+        (unsigned char *pixels, int format, int width, int height, result_68_t *p_result, int rstNum, int orientation, int faceNum);
 
 // The maximum number of detectable faces, ranging from 1 to 4, defaults to 4
 @property(nonatomic) NSUInteger maxFaceNumber;
@@ -92,9 +92,6 @@ typedef void(^RenderAndGetFacePointsBlock)
 
 //Whether to open the face stickers
 @property(nonatomic, assign) BOOL isEnableSmiliesSticker;
-
-//是否开启抠图
-@property(nonatomic, assign) BOOL isEnableCutOut;
 
 //是否开启换脸
 @property(nonatomic, assign) BOOL isEnableAutomaticFace;
@@ -130,4 +127,3 @@ typedef void(^RenderAndGetFacePointsBlock)
 @end
 
 UIKIT_EXTERN NSString *const KWVerifyFailededNotification;
-

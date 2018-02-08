@@ -14,6 +14,8 @@
 
 + (instancetype)sharedInstance;
 
+- (void)clearDownloadCache;
+
 /**
  Download a single sticker
  

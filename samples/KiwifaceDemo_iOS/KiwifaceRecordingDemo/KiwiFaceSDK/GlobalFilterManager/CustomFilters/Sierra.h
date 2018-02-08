@@ -1,9 +1,9 @@
 #import "GPUImageFilterGroup.h"
 #import "KWRenderProtocol.h"
 #import "GPUImage.h"
-#import "GPUImageFourInputFilter.h"
+#import "FourInputFilter.h"
 
-@interface SierraFilter : GPUImageFourInputFilter
+@interface SierraFilter : FourInputFilter
 
 @end
 

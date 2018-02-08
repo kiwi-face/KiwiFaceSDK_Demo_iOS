@@ -1,7 +1,7 @@
-#import "GPUImageFourInputFilter.h"
+#import "FourInputFilter.h"
 #import "KWRenderProtocol.h"
 
-@interface FiveInputFilter : GPUImageFourInputFilter <KWRenderProtocol>
+@interface FiveInputFilter : FourInputFilter <KWRenderProtocol>
 {
     GPUImageFramebuffer *fifthInputFramebuffer;
 

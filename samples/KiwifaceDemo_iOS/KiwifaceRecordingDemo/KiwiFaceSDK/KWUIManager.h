@@ -62,8 +62,6 @@ typedef void(^UpdateLogBlock)(NSString *log);
 
 @property(nonatomic, weak) id <KWUIManagerDelegate> delegate;
 
-@property(nonatomic, strong) UIButton *btnIsEnableGrabCut;
-
 /**
  Video preview layer
  */

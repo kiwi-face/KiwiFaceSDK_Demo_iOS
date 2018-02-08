@@ -154,7 +154,7 @@ KWRenderManager *instanceManager = nil;
     //美颜滤镜
     self.beautyFilter = [[KWBeautyFilter alloc] init];
 
-
+/*********************若使用哈哈镜功能请将此段代码打开********************************/
     /* 哈哈镜滤镜集合*/
 //    self.distortionFilters = @[
 //                               [SquareFaceDistortionFilter new],
@@ -163,6 +163,7 @@ KWRenderManager *instanceManager = nil;
 //                               [SlimFaceDistortionFilter new],
 //                               [PearFaceDistortionFilter new]
 //                               ];
+/******************************************************************************/
 
     self.distortionTitleInfosArr =
             [NSMutableArray arrayWithObjects:@"cancel", @"distortion_SquareFace.png", @"distortion_ET.png", @"distortion_FatFace", @"distortion_SmallFace", @"distortion_PearFace", nil];
@@ -208,20 +209,23 @@ KWRenderManager *instanceManager = nil;
 }
 
 - (void)resetDistortionParams {
-    if ([[Global sharedManager] isPixcelBufferRotateVertical]) {
-        self.smallFaceBigEyeFilter.y_scale = self.varHeight / self.varWidth;
+    if ([Global sharedManager].isPixcelBufferRotateVertical) {
 
-        ((ETDistortionFilter *) self.distortionFilters[1]).y_scale = self.varHeight / self.varWidth;
-        ((FatFaceDistortionFilter *) self.distortionFilters[2]).y_scale = self.varHeight / self.varWidth;
-        ((SlimFaceDistortionFilter *) self.distortionFilters[3]).y_scale = self.varHeight / self.varWidth;
-        ((PearFaceDistortionFilter *) self.distortionFilters[4]).y_scale = self.varHeight / self.varWidth;
-    } else {
         self.smallFaceBigEyeFilter.y_scale = self.varWidth / self.varHeight;
-
+        
+        
         ((ETDistortionFilter *) self.distortionFilters[1]).y_scale = self.varWidth / self.varHeight;
         ((FatFaceDistortionFilter *) self.distortionFilters[2]).y_scale = self.varWidth / self.varHeight;
         ((SlimFaceDistortionFilter *) self.distortionFilters[3]).y_scale = self.varWidth / self.varHeight;
         ((PearFaceDistortionFilter *) self.distortionFilters[4]).y_scale = self.varWidth / self.varHeight;
+    } else {
+
+        self.smallFaceBigEyeFilter.y_scale = self.varHeight / self.varWidth;
+        
+        ((ETDistortionFilter *) self.distortionFilters[1]).y_scale = self.varHeight / self.varWidth;
+        ((FatFaceDistortionFilter *) self.distortionFilters[2]).y_scale = self.varHeight / self.varWidth;
+        ((SlimFaceDistortionFilter *) self.distortionFilters[3]).y_scale = self.varHeight / self.varWidth;
+        ((PearFaceDistortionFilter *) self.distortionFilters[4]).y_scale = self.varHeight / self.varWidth;
     }
 
 }
@@ -237,7 +241,7 @@ KWRenderManager *instanceManager = nil;
     switch (iDeviceOrientation) {
         case UIDeviceOrientationPortrait:
             cvMobileRotate = CV_CLOCKWISE_ROTATE_90;
-            [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_0;
+            [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_90;
             break;
 
         case UIDeviceOrientationLandscapeLeft:
@@ -247,7 +251,7 @@ KWRenderManager *instanceManager = nil;
 
         case UIDeviceOrientationLandscapeRight:
             cvMobileRotate = mirrored ? CV_CLOCKWISE_ROTATE_0 : CV_CLOCKWISE_ROTATE_180;
-            [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_90;
+            [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_0;
             break;
 
         case UIDeviceOrientationPortraitUpsideDown:
@@ -256,7 +260,8 @@ KWRenderManager *instanceManager = nil;
             break;
 
         default:
-            cvMobileRotate = CV_CLOCKWISE_ROTATE_0;
+            cvMobileRotate = CV_CLOCKWISE_ROTATE_90;
+            [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_90;
             break;
     }
 
@@ -458,6 +463,7 @@ KWRenderManager *instanceManager = nil;
 }
 
 - (void)releaseManager {
+    
     [self.stickerRender setSticker:nil];
     [self.presentStickerRenderer setSticker:nil];
     [self.smiliesStickerRenderer setSticker:nil];
@@ -482,6 +488,7 @@ KWRenderManager *instanceManager = nil;
     self.smiliesStickerRenderer = nil;
     self.presentStickerRenderer = nil;
     self.smallFaceBigEyeFilter = nil;
+    [self.renderer releaseRender];
     self.renderer = nil;
     instanceManager = nil;
 

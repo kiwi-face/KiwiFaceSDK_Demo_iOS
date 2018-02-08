@@ -2,7 +2,7 @@
 #import "SixInputFilter.h"
 #import "KWRenderProtocol.h"
 #import "GPUImage.h"
-#import "GPUImageFourInputFilter.h"
+#import "FourInputFilter.h"
 
 @interface ToasterFilter : SixInputFilter
 
