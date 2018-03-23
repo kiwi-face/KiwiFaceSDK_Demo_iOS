@@ -62,8 +62,6 @@ typedef NS_ENUM(NSInteger, KW_DISTORTION_TYPE)
     KW_DISTORTION_TYPE_SMALLFACE
 };
 
-@property(nonatomic, assign)NSTimeInterval timeStamp;
-
 + (Global *)sharedManager;
 
 /* Whether the project is based on seven cattle (seven cattle video home page default orientation towards the default rotation 0 degrees non-seven cattle home to the right that is rotated 90 degrees) */

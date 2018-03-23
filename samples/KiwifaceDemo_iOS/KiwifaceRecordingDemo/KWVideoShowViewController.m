@@ -546,11 +546,10 @@
     
     [KWRenderManager processPixelBuffer:pixelBuffer];
     
+    //是否检测到人脸返回接口
     if (!self.renderManager.renderer.trackResultState) {
-        NSLog(@"没有捕捉到人脸");
         //没有捕捉到人脸
     } else {
-        NSLog(@"捕捉到人脸");
         //捕捉到人脸
     }
     /*********** 如果有拍照功能则加上***********/

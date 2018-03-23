@@ -281,13 +281,13 @@ static NSString *KWFilterCellIdentifier = @"KWFilterCellIdentifier";
 //        [self.superView addSubview:self.presentSwitchBtn];
 //
 //        [self.superView addSubview:self.smiliesSwitchBtn];
-        
+
         [self.superView addSubview:self.closeVideoBtn];
-
+        
         [self.superView addSubview:self.toggleBtn];
-
+        
         [self.superView addSubview:self.offPhoneBtn];
-
+        
         [self.superView addSubview:self.openStickerSetBtn];
 
         [self.superView addSubview:self.openFilterSetBtn];

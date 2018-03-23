@@ -231,40 +231,40 @@ KWRenderManager *instanceManager = nil;
 }
 
 + (void)processPixelBuffer:(CVPixelBufferRef)pixelBuffer {
-
+    
     UIDeviceOrientation iDeviceOrientation = [[UIDevice currentDevice] orientation];
-
+    
     BOOL mirrored = !instanceManager.cameraPositionBack;
-
+    
     cv_rotate_type cvMobileRotate;
-
+    
     switch (iDeviceOrientation) {
         case UIDeviceOrientationPortrait:
             cvMobileRotate = CV_CLOCKWISE_ROTATE_90;
             [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_90;
             break;
-
+            
         case UIDeviceOrientationLandscapeLeft:
             cvMobileRotate = mirrored ? CV_CLOCKWISE_ROTATE_180 : CV_CLOCKWISE_ROTATE_0;
             [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_270;
             break;
-
+            
         case UIDeviceOrientationLandscapeRight:
             cvMobileRotate = mirrored ? CV_CLOCKWISE_ROTATE_0 : CV_CLOCKWISE_ROTATE_180;
             [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_0;
             break;
-
+            
         case UIDeviceOrientationPortraitUpsideDown:
             cvMobileRotate = CV_CLOCKWISE_ROTATE_270;
             [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_180;
             break;
-
+            
         default:
             cvMobileRotate = CV_CLOCKWISE_ROTATE_90;
             [Global sharedManager].PIXCELBUFFER_ROTATE = KW_PIXELBUFFER_ROTATE_90;
             break;
     }
-
+    
     [instanceManager.renderer processPixelBuffer:pixelBuffer withRotation:cvMobileRotate mirrored:mirrored];
 }
 
