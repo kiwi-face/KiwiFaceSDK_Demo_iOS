@@ -66,7 +66,7 @@
 
 #define IsEnglish 0
 
-#define KWStickerDownloadBaseURL @"https://omhooyf5o.qnssl.com"
+#define KWStickerDownloadBaseURL @"https://stickers-cdn.kiwiar.com"
 
-#define StickerIconPath @"https://omhopkmng.qnssl.com/"
+#define StickerIconPath @"https://stickers-thumb-cdn.kiwiar.com/"
 
